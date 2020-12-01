@@ -71,10 +71,10 @@ class Planet
 
 /* Deklarasi Object Planet */
 var matahari = new Planet("Matahari", 0.0, 0.0, 0.2, 0.0, 255.0, 165.0, 0.0, true);
-var merkurius = new Planet("Merkurius", 0.4, 0.2, 0.08, 90.0, 210.0, 105.0, 30.0, true);
+var merkurius = new Planet("Merkurius", 0.4, 0.2, 0.08, 90.0, 210.0, 105.0, 30.0, false);
 var venus = new Planet("Venus", -0.5, 0.2, 0.08, 180.0, 255.0, 0.0, 0.0, true);
 var bumi = new Planet("Bumi", 0.05, -0.9, 0.08, 0.0, 0.0, 0.0, 255.0, true);
-var bulan = new Planet("Bulan", 0.1, -1.2, 0.03, 0.0, 105.0, 105.0, 105.0, true);
+var bulan = new Planet("Bulan", 0.1, -1.2, 0.03, 0.0, 105.0, 105.0, 105.0, false);
 
 function degToRad(degrees)
 {
