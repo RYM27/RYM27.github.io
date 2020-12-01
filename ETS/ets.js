@@ -71,10 +71,11 @@ class Planet
 
 /* Deklarasi Object Planet */
 var matahari = new Planet("Matahari", 0.0, 0.0, 0.2, 0.0, 255.0, 165.0, 0.0, true);
-var merkurius = new Planet("Merkurius", 0.4, 0.2, 0.08, 90.0, 210.0, 105.0, 30.0, false);
-var venus = new Planet("Venus", -0.5, 0.2, 0.08, 180.0, 255.0, 0.0, 0.0, true);
+var merkurius = new Planet("Merkurius", 0.4, 0.2, 0.06, 90.0, 210.0, 105.0, 30.0, false);
+var venus = new Planet("Venus", -0.5, 0.2, 0.06, 180.0, 255.0, 0.0, 0.0, true);
 var bumi = new Planet("Bumi", 0.05, -0.9, 0.08, 0.0, 0.0, 0.0, 255.0, true);
 var bulan = new Planet("Bulan", 0.1, -1.2, 0.03, 0.0, 105.0, 105.0, 105.0, false);
+var mars = new Planet("Mars", 1.2, 0.7, 0.06, 90.0, 165.0, 42.0, 42.0, true);
 
 function degToRad(degrees)
 {
@@ -169,6 +170,7 @@ function setupShaders() {
     shaderProgram.mvMatrixUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
 
     shaderProgram.translation = gl.getUniformLocation(shaderProgram, "translation");
+
 }
 
 
@@ -201,10 +203,11 @@ function draw() {
     
     
     mat4.identity(mvMatrix);
+
     //mat4.rotateX(mvMatrix, mvMatrix, degToRad(rotAngle));
     gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, mvMatrix);
 
-    gl.uniform4f(shaderProgram.translation, 0.0, 0.0, 0.0, 0.3);
+    gl.uniform4f(shaderProgram.translation, 0.0, 0.0, 0.0, 0.6);
 
     const vertexCount = 102;
     gl.drawArrays(gl.TRIANGLE_FAN, offset, vertexCount);
@@ -223,7 +226,9 @@ function tick() {
     draw();
     bulan.setupBuffers()
     draw();
-    animate();
+    mars.setupBuffers()
+    draw();
+   animate();
 }
 
 function animate() {
@@ -235,6 +240,7 @@ function animate() {
         bumi.rotAngle = bumi.rotAngle + 0.1 % 360;
         bulan.rotAngle = bulan.rotAngle + 0.1 % 360;
         bulan.rotAngle2 = bulan.rotAngle2 + 0.3 % 360;
+        mars.rotAngle = mars.rotAngle + 0.1 % 360;
 
         merkurius.x = merkurius.x + 0.04 * Math.cos(merkurius.rotAngle);
         merkurius.y = merkurius.y + 0.04 * Math.sin(merkurius.rotAngle);
@@ -250,6 +256,9 @@ function animate() {
 
         bulan.x = bulan.x + 0.09 * Math.cos(bulan.rotAngle2);
         bulan.y = bulan.y + 0.09 * Math.sin(bulan.rotAngle2);
+
+        mars.x = mars.x + 0.14 * Math.cos(mars.rotAngle);
+        mars.y = mars.y + 0.14 * Math.sin(mars.rotAngle);
         
     }
     lastTime = timeNow;
