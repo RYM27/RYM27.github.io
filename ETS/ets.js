@@ -135,8 +135,6 @@ class Planet
         mat4.identity(mvMatrix);
         mat4.translate(mvMatrix, mvMatrix, [this.x/this.z, this.y/this.z, this.z/this.z]);
         mat4.scale(mvMatrix, mvMatrix, new Array(3).fill(this.r/26.0))
-        //mat4.rotateZ(mvMatrix, mvMatrix, degToRad(90));
-        //mat4.rotate(mvMatrix, mvMatrix, degToRad(45), [ 1.0, 0.0, 0.0 ]);
         gl.uniformMatrix4fv(shaderProgram.mvMatrixUniform, false, mvMatrix);
 
         gl.drawElements(gl.TRIANGLES, this.indices.length, gl.UNSIGNED_SHORT, 0);
@@ -348,9 +346,6 @@ function projection() {
         mat4.rotateX(projectionMatrix, projectionMatrix, degToRad(90));
         document.getElementById("posisiKamera").innerText = "Posisi Kamera: Dari Samping";
     }
-    //mat4.perspective(projectionMatrix, degToRad(150), gl.canvas.clientWidth / gl.canvas.clientHeight, 0.0, 40000000000000000.0);
-    //mat4.lookAt(projectionMatrix, [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0]);
-    //mat4.rotate(projectionMatrix, projectionMatrix, degToRad(45), [0.0, 1.0, 0.0 ]);
     gl.uniformMatrix4fv(shaderProgram.projectionMatrix, false, projectionMatrix);
 }
 
