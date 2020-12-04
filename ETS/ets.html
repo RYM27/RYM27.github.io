@@ -9,12 +9,13 @@
     attribute vec3 aVertexPosition;
     attribute vec4 aVertexColor;
     uniform mat4 uMVMatrix;
+    uniform mat4 uProjectionMatrix;
     uniform vec4 translation;
     
     varying vec4 vColor;
     
     void main(void) {
-        gl_Position = uMVMatrix * vec4(aVertexPosition, 1.0) + translation;
+        gl_Position = uProjectionMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
         vColor = aVertexColor;
     }
 </script>
@@ -34,5 +35,7 @@
 <script src="ets.js"></script>
 
 <body onload="startup();">
+    <div>Klik beberapa kali untuk mengganti posisi kamera</div>
+    <div id="posisiKamera">Posisi Kamera: Top Down (Dari Atas)</div>
     <canvas id="myCanvas" width="500" height="500"></canvas>
 </body>
