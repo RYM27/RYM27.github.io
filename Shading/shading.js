@@ -107,8 +107,7 @@ function setupShaders() {
     shaderProgram.mvMatrixUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
     shaderProgram.projectionMatrixUniform = gl.getUniformLocation(shaderProgram, "uProjectionMatrix");
 
-     // retrieve the location of the UNIFORM variables of the shader
-
+    //phong
     shaderProgram.normalLoc = gl.getAttribLocation(shaderProgram, "normal");
     gl.enableVertexAttribArray(shaderProgram.normalLoc);
     shaderProgram.normalMatrixLoc = gl.getUniformLocation(shaderProgram, "normalMat");
