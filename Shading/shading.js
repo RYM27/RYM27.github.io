@@ -15,8 +15,6 @@ var projectionMatrix = mat4.create();
 
 var normalmatrix = mat4.create();
 
-var rotAngle = 0.0;
-
 var lastTime = 0;
 
 var posLighting = 2.0;
